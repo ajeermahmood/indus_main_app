@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:indus_app/controller/bottom_nav_controller.dart';
+import 'package:indus_app/controller/home_page_controller.dart';
 import 'package:indus_app/pages/agents_page.dart';
 import 'package:indus_app/pages/home_page.dart';
-import 'package:indus_app/pages/map_page.dart';
+import 'package:indus_app/pages/settings_page.dart';
 import 'package:indus_app/pages/properties_page.dart';
-import 'package:indus_app/widgets/navigation_drawer.dart';
+import 'package:indus_app/widgets/drawer_widget.dart';
 import 'package:line_icons/line_icons.dart';
 
 class BottomNavbarWidget extends GetView<BottomNavbarController> {
@@ -18,14 +19,13 @@ class BottomNavbarWidget extends GetView<BottomNavbarController> {
         elevation: 1,
         backgroundColor: Colors.grey[100],
         title: SizedBox(
-          width: 65,
-          height: 40,
+          width: 80,
           child: Image.asset(
             'assets/images/indus-logo-extended.png',
           ),
         ),
       ),
-      drawer: NavigationDrawerWidget(),
+      drawer: DrawerWidget(),
       body: Obx(() => getPage(controller.currentIndex.value)),
       bottomNavigationBar: Obx(() => BottomNavigationBar(
             elevation: 20,
@@ -45,15 +45,21 @@ class BottomNavbarWidget extends GetView<BottomNavbarController> {
                 label: 'Agents',
               ),
               BottomNavigationBarItem(
-                icon: Icon(LineIcons.map),
-                label: 'Map',
+                icon: Icon(LineIcons.cog),
+                label: 'Settings',
               ),
             ],
             currentIndex: controller.currentIndex.value,
             selectedItemColor: Colors.blue,
             onTap: (value) {
               controller.currentIndex(value);
+              HomePageController homePageController = Get.find();
+
+              if (value == 0) {
+                homePageController.bannerIndex(0);
+              }
             },
+            showUnselectedLabels: true,
           )),
     );
   }
@@ -68,7 +74,7 @@ Widget getPage(index) {
     case 2:
       return const AgentsPage();
     case 3:
-      return const MapPage();
+      return const SettingsPage();
     default:
       return const HomePage();
   }

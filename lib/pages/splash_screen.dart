@@ -11,25 +11,12 @@ class SplashScreen extends StatelessWidget {
       body: GetBuilder<SplashScreenViewController>(
         init: SplashScreenViewController(),
         builder: (controller) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 2,
-                  child: Image.asset(
-                    'assets/images/indus-logo.png',
-                  ),
-                ),
-                Text(
-                  'Indus Real Estate LLC',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue[800],
-                  ),
-                )
-              ],
+          return SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Image.asset(
+              'assets/images/splash-banner.jpg',
+              fit: BoxFit.cover,
             ),
           );
         },

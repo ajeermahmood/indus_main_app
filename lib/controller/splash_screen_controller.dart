@@ -7,7 +7,7 @@ class SplashScreenViewController extends GetxController {
     super.onInit();
 
     Future.delayed(const Duration(seconds: 2), () {
-      Get.offAllNamed(AppRoutes.base);
+      Get.offAllNamed(AppRoutes.authFlow);
     });
   }
 }

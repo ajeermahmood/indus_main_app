@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class MapPageController extends GetxController {
+class AuthFlowController extends GetxController {
   @override
   void onInit() async {
     super.onInit();

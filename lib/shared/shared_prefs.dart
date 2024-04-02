@@ -15,4 +15,14 @@ class SharedPrefs {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.remove('user_id');
   }
+
+  Future<void> setUserThemeModePrefs(bool themeMode) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('theme_black', themeMode);
+  }
+
+  Future<bool?> getUserThemeModePrefs() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getBool('theme_black');
+  }
 }
