@@ -5,6 +5,7 @@ import 'package:indus_app/controller/bottom_nav_controller.dart';
 import 'package:indus_app/controller/home_page_controller.dart';
 import 'package:indus_app/controller/properties_page_controller.dart';
 import 'package:indus_app/controller/settings_page_controller.dart';
+import 'package:indus_app/controller/sign_in_page_controller.dart';
 import 'package:indus_app/controller/splash_screen_controller.dart';
 
 class BaseBindings implements Bindings {
@@ -12,6 +13,7 @@ class BaseBindings implements Bindings {
   void dependencies() {
     Get.lazyPut(() => SplashScreenViewController());
     Get.lazyPut(() => AuthFlowController());
+    Get.lazyPut(() => SignInPageController());
     Get.put(BottomNavbarController());
     Get.lazyPut(() => HomePageController());
     Get.lazyPut(() => PropertiesPageController());
