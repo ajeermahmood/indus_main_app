@@ -255,6 +255,7 @@ class ContentPartWidget extends StatelessWidget {
             },
             title: controller.currentPage.value >= 2 ? 'Get Started' : 'Next',
             isIcon: false,
+            isDisabled: false,
           ),
         ),
       ],

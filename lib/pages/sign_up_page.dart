@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
-import 'package:indus_app/controller/sign_in_page_controller.dart';
-import 'package:indus_app/routes/app_routes.dart';
+import 'package:indus_app/controller/sign_up_page_controller.dart';
 import 'package:indus_app/widgets/auth_widgets.dart';
 import 'package:indus_app/widgets/textformfield_widget.dart';
 
-class SignInPage extends GetView<SignInPageController> {
-  const SignInPage({Key? key}) : super(key: key);
+class SignUpPage extends GetView<SignUpPageController> {
+  const SignUpPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +48,7 @@ class SignInPage extends GetView<SignInPageController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: height / 2 - (appBar.preferredSize.height - 20),
+                    height: height / 2 - (appBar.preferredSize.height - 40),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +60,7 @@ class SignInPage extends GetView<SignInPageController> {
                               text: TextSpan(
                                 children: [
                                   TextSpan(
-                                    text: 'Let\'s ',
+                                    text: 'Create your ',
                                     style: Theme.of(context)
                                         .textTheme
                                         .headlineSmall!
@@ -73,7 +72,7 @@ class SignInPage extends GetView<SignInPageController> {
                                         ),
                                   ),
                                   TextSpan(
-                                      text: 'sign in 👍',
+                                      text: 'account 👍',
                                       style: Theme.of(context)
                                           .textTheme
                                           .headlineSmall!
@@ -88,7 +87,7 @@ class SignInPage extends GetView<SignInPageController> {
                             ),
                             const SizedBox(height: 10),
                             Text(
-                              'Use Credentials to access your account',
+                              'Welcome to Indus Real Estate LLC. Let\'s get started.',
                               style: Theme.of(context)
                                   .textTheme
                                   .titleMedium!
@@ -99,6 +98,15 @@ class SignInPage extends GetView<SignInPageController> {
                                   ),
                             ),
                           ],
+                        ),
+                        TextFormWidget(
+                          controller: controller.nameController,
+                          focusNode: controller.focusNodeName,
+                          hintText: 'Enter Name',
+                          isPrefixIcon: true,
+                          isSuffixIcon: false,
+                          prefixIcon: FeatherIcons.user,
+                          isPassword: false,
                         ),
                         TextFormWidget(
                           controller: controller.emailController,
@@ -125,26 +133,6 @@ class SignInPage extends GetView<SignInPageController> {
                               controller.hidePassword.value =
                                   !controller.hidePassword.value;
                             },
-                          ),
-                        ),
-                        SizedBox(
-                          width: width,
-                          child: InkWell(
-                            onTap: () {
-                              Get.toNamed(AppRoutes.forgotPassword);
-                            },
-                            child: Text(
-                              'Forgot Password?',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium!
-                                  .copyWith(
-                                    color:
-                                        Theme.of(context).colorScheme.secondary,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                              textAlign: TextAlign.end,
-                            ),
                           ),
                         ),
                         Row(
@@ -203,14 +191,12 @@ class SignInPage extends GetView<SignInPageController> {
                   Obx(
                     () => OrLoginWithWidget(
                       width: width,
-                      height: height / 2 - (appBar.preferredSize.height + 40),
-                      buttonText: 'Login',
+                      height: height / 2 - (appBar.preferredSize.height + 80),
+                      buttonText: 'Register',
                       isIcon: false,
-                      onTap: () {
-                        Get.offAndToNamed(AppRoutes.fillUserInfo);
-                      },
+                      onTap: () {},
                       isDisabled: !controller.agreeTerms.value,
-                      isSignUpPage: false,
+                      isSignUpPage: true,
                     ),
                   ),
                 ],

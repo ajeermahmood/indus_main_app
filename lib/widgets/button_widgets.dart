@@ -39,25 +39,27 @@ class CustomButtonWidget02 extends StatelessWidget {
     required this.title,
     required this.onTap,
     required this.isIcon,
+    required this.isDisabled,
     this.icon,
   });
 
   final String title;
   final void Function()? onTap;
   final bool isIcon;
+  final bool isDisabled;
   IconData? icon;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: onTap,
+      onPressed: isDisabled ? null : onTap,
       style: ButtonStyle(
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(7),
         )),
         backgroundColor: MaterialStateProperty.all(
-          Theme.of(context).colorScheme.primary,
+          isDisabled ? Colors.grey[300] : Theme.of(context).colorScheme.primary,
         ),
         padding: MaterialStateProperty.all(
           const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
@@ -80,7 +82,9 @@ class CustomButtonWidget02 extends StatelessWidget {
             Text(
               title,
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    color: Theme.of(context).colorScheme.onSurface,
+                    color: isDisabled
+                        ? Colors.grey[500]
+                        : Theme.of(context).colorScheme.onSurface,
                     fontWeight: FontWeight.w400,
                   ),
             ),
