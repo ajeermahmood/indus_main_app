@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:indus_app/controller/bottom_nav_controller.dart';
 import 'package:indus_app/controller/home_page_controller.dart';
 import 'package:indus_app/pages/agents_page.dart';
 import 'package:indus_app/pages/home_page.dart';
-import 'package:indus_app/pages/settings_page.dart';
 import 'package:indus_app/pages/properties_page.dart';
-import 'package:indus_app/widgets/drawer_widget.dart';
+import 'package:indus_app/pages/settings_page.dart';
 import 'package:line_icons/line_icons.dart';
 
 class BottomNavbarWidget extends GetView<BottomNavbarController> {
@@ -15,17 +15,17 @@ class BottomNavbarWidget extends GetView<BottomNavbarController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 1,
-        backgroundColor: Colors.grey[100],
-        title: SizedBox(
-          width: 80,
-          child: Image.asset(
-            'assets/images/indus-logo-extended.png',
-          ),
-        ),
-      ),
-      drawer: DrawerWidget(),
+      // appBar: AppBar(
+      //   elevation: 1,
+      //   backgroundColor: Colors.grey[100],
+      //   title: SizedBox(
+      //     width: 80,
+      //     child: Image.asset(
+      //       'assets/images/indus-logo-extended.png',
+      //     ),
+      //   ),
+      // ),
+      // drawer: DrawerWidget(),
       body: Obx(() => getPage(controller.currentIndex.value)),
       bottomNavigationBar: Obx(() => BottomNavigationBar(
             elevation: 20,
@@ -33,20 +33,24 @@ class BottomNavbarWidget extends GetView<BottomNavbarController> {
             unselectedItemColor: Colors.grey,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: Icon(LineIcons.home),
+                icon: Icon(FeatherIcons.home),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
-                icon: Icon(LineIcons.building),
-                label: 'Properties',
+                icon: Icon(FeatherIcons.search),
+                label: 'Search',
               ),
               BottomNavigationBarItem(
-                icon: Icon(LineIcons.users),
-                label: 'Agents',
+                icon: Icon(FeatherIcons.heart),
+                label: 'Favourites',
               ),
               BottomNavigationBarItem(
-                icon: Icon(LineIcons.cog),
-                label: 'Settings',
+                icon: Icon(LineIcons.bell),
+                label: 'Notifications',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(LineIcons.user),
+                label: 'profile',
               ),
             ],
             currentIndex: controller.currentIndex.value,
@@ -59,7 +63,7 @@ class BottomNavbarWidget extends GetView<BottomNavbarController> {
                 homePageController.bannerIndex(0);
               }
             },
-            showUnselectedLabels: true,
+            // showUnselectedLabels: true,
           )),
     );
   }

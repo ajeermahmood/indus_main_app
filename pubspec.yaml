@@ -33,8 +33,9 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/images/prop-type-grid/
 
-flutter_launcher_icons:
-  android: true
-  ios: true
-  image_path: "assets/icon/icon.png"
+# flutter_launcher_icons:
+#   android: true
+#   ios: true
+#   image_path: "assets/icon/icon.png"
