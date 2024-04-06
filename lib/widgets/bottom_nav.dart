@@ -54,7 +54,7 @@ class BottomNavbarWidget extends GetView<BottomNavbarController> {
               ),
             ],
             currentIndex: controller.currentIndex.value,
-            selectedItemColor: Colors.blue,
+            selectedItemColor: Theme.of(context).colorScheme.primary,
             onTap: (value) {
               controller.currentIndex(value);
               HomePageController homePageController = Get.find();
